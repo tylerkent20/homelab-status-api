@@ -1,0 +1,11 @@
+services:
+  status-api:
+    build: .
+    container_name: homelab-status-api
+    restart: unless-stopped
+
+    ports:
+      - "192.168.1.193:5000:5000"
+
+    environment:
+      PYTHONUNBUFFERED: "1"
