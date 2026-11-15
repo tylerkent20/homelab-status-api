@@ -31,6 +31,13 @@ def status():
 	"timestamp": datetime.now(timezone.utc).isoformat(),
 	"uptime_seconds": round(time.monotonic() - START_TIME, 2)
     })
+    
+@app.route("/api/version")
+def version():
+    return jsonify({
+	"application": "homelab-status-api",
+    "version": "1.1.0"
+    })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
