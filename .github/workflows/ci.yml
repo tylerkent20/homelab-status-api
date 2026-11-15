@@ -8,26 +8,22 @@ on:
     branches:
       - main
 
-
 permissions:
   contents: read
-
 
 jobs:
   test-and-build:
     name: Test and Build Docker Image
     runs-on: ubuntu-latest
 
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
-       uses: actions/setup-python@v5
-       with:
-         python-version: '3.12'
-
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -38,6 +34,6 @@ jobs:
         run: |
           python -m py_compile app.py
 
-      - name: Build Docker Image
+      - name: Build Docker image
         run: |
           docker build -t homelab-status-api:ci .
